@@ -8,7 +8,12 @@ function fetchData() {
             colorList.innerHTML = '';
 
             // Parse the stringified JSON from the body property
-            const parsedData = JSON.parse(data.body);
+            let parsedData = JSON.parse(data.body);
+
+            // If parsedData is not an array, wrap it in an array
+            if (!Array.isArray(parsedData)) {
+                parsedData = [parsedData];
+            }
 
             parsedData.forEach(item => {
                 const li = document.createElement('li');
