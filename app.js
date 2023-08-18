@@ -7,7 +7,10 @@ function fetchData() {
             // Clear the existing list to avoid appending duplicate items
             colorList.innerHTML = '';
 
-            data.forEach(item => {
+            // Parse the stringified JSON from the body property
+            const parsedData = JSON.parse(data.body);
+
+            parsedData.forEach(item => {
                 const li = document.createElement('li');
                 li.textContent = `User: ${item.userId}, Color: ${item.color}, Timestamp: ${item.timestamp}`;
                 colorList.appendChild(li);
